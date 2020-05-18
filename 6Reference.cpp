@@ -41,3 +41,13 @@ int main()
     cout<<" Value of x = "<<x<<" \n ref is "<<ref<<"\n";
     
 }
+/*
+Use references
+
+    In function parameters and return types.
+
+Use pointers:
+
+    Use pointers if pointer arithmetic or passing NULL-pointer is needed. For example for arrays (Note that array access is implemented using pointer arithmetic).
+    To implement data structures like linked list, tree, etc and their algorithms because to point different cell, we have to use the concept of pointers.
+*/
