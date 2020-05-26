@@ -10,6 +10,8 @@ class Car{
         int speed = 0;
         /*
           From c++ 11 onwards declaration and initialization of data member is allowed 
+          but not with auto keyword
+          e.g. auto var = 9.9; is not allowed
         */
        
   public:
