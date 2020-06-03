@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+class Integer{
+    private:
+        int mValue = 0;
+    public:
+        //Integer();
+        Integer() = default;
+        Integer(int val);
+        
+        //Integer(const Integer &obj) = default; // This is default copy constructor.
+        // If we do not create this compiler will automatically sythesizes it
+        
+        Integer(const Integer &obj) = delete; // this will protect from creating copy of the object 
+        void setValue(int val);
+        void setValue(float) = delete; // To restrict user for passing float value to the setValue() 
+                                       // function we use delete keyword
+        
+};
+void Integer:: setValue(int val){
+    mValue = val;
+}
+//Integer::Integer() = default;
+//Integer::Integer(){
+//    mValue = 0;
+//}
+Integer::Integer(int val){
+    mValue = val;
+}
+int main()
+{
+    /*
+    Default and deleted functions
+    If we initialize the mValue in class defination and remove the default constructor 
+    then compiler will throw error as we are creating an object i without passing parameters
+    
+    IMPORTANT: Reason is compiler will not synthesize a default constructor because we have already implemented
+    parameterized constructor
+    
+    In c++11 we can request compiler to generate 'default' implementation of some functions
+    we can use default keyword only with those functions that can be synthesized by compiler 
+    those are copy constructor, destructor, assignment operator
+    */
+    Integer i;
+    
+    //Integer i2(i);
+    //error: use of deleted function ‘Integer::Integer(const Integer&)’
+    //As we used delete keyword for copy constructor hence it is not allowed to create copy of object
+    
+    i.setValue(5);
+    i.setValue(3.4f);// error: use of deleted function ‘void Integer::setValue(float)
+    // Here compiler will throw error if user tries to pass float value 
+    return 0;
+}
